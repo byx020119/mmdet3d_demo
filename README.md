@@ -31,3 +31,4 @@ PS: Ensure that the version of torch and cuda is consistent with the version of 
 ```sh
 python pcd_demo.py data/kitti/kitti_000008.bin configs/second/hv_second_secfpn_6x8_80e_kitti-3d-car.py weights/hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth --show
 ```
+![](pcd_demo.png)
