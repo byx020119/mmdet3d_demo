@@ -5,3 +5,4 @@ data/nuscenes/
 work_dirs/
 weights/
 result/
+test/
