@@ -1,2 +1,7 @@
 .idea
 demo
+data/can_bus/
+data/nuscenes/
+work_dirs/
+weights/
+result/
