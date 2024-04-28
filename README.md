@@ -1,5 +1,5 @@
 # mmdet3d_demo
-mmdet3d-v0.17.1 demo，for learning and example
+基于mmdetection3d-1.0.0rc6，一个实例性的工程，用于展示mmdetection3d的使用方法。
 
 ## 1. Install
 
@@ -25,15 +25,47 @@ pip install -v -e .
 # Install other requirements
 pip install open3d
 ```
-PS: Ensure that the version of torch and cuda is consistent with the version of mmcv-full and mmdet.
+PS: 确保安装的torch与cuda版本与mmcv与mmdet版本对应，否则会出现错误。
 
-## 2. Run
+## 2. Start
+文件组织如下：
+```
+mmdet3d_demo
+├── configs
+├── data
+│   ├── can_bus
+│   ├── kitti
+│   └── nuscenes
+├── mmdet3d_plugin
+├── pcd_demo.py
+├── tools
+└── weights
+    ├── bevformer_tiny_epoch_24.pth
+    └── hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth
 
-Download the weights from releases, and put it in the ./weights/ folder.
+```
+### pcd_demo
+
+从releases中下载权重, 然后放在`./weights/` 文件夹下。
 
 ```sh
 python pcd_demo.py data/kitti/kitti_000008.bin configs/second/hv_second_secfpn_6x8_80e_kitti-3d-car.py weights/hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth --show
 ```
 
-PS: Or you can use custom_config.py to instead of the default config file.
+PS: 也可以设置好参数后使用pycharm直接运行`pcd_demo.py`文件。
 ![](pcd_demo.png)
+
+### bevformer_demo
+
+从releases中下载权重, 然后放在`./weights/` 文件夹下。
+```shell
+python test.py configs/bevformer/bevformer_tiny.py weights/bevformer_tiny_epoch_24.pth --eval bbox
+```
+PS: 也可以设置好参数后使用pycharm直接运行`test.py`文件。
+
+```shell
+python train.py configs/bevformer/bevformer_tiny.py
+```
+PS: 也可以设置好参数后使用pycharm直接运行`train.py`文件。
+![](bevformer_demo_1.png)
+![](bevformer_demo_2.png)

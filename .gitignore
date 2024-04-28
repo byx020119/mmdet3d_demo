@@ -6,3 +6,4 @@ work_dirs/
 weights/
 result/
 test/
+__pycache__
