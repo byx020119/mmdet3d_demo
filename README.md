@@ -57,15 +57,33 @@ PS: 也可以设置好参数后使用pycharm直接运行`pcd_demo.py`文件。
 
 ### bevformer_demo
 
+**准备数据集**
+
+下载nuScenes V1.0 的full或者mini数据集（包括data和CAN bus expansion data），然后处理数据：
+
+```shell
+python tools/bevformer/create_data.py nuscenes --root-path ./data/nuscenes --out-dir ./data/nuscenes --extra-tag nuscenes --version v1.0 --canbus ./data
+```
+
+**测试**
+
 从releases中下载权重, 然后放在`./weights/` 文件夹下。
 ```shell
 python test.py configs/bevformer/bevformer_tiny.py weights/bevformer_tiny_epoch_24.pth --eval bbox
 ```
 PS: 也可以设置好参数后使用pycharm直接运行`test.py`文件。
 
+**训练**
+
 ```shell
 python train.py configs/bevformer/bevformer_tiny.py
 ```
 PS: 也可以设置好参数后使用pycharm直接运行`train.py`文件。
+
+**可视化**
+
+见`tools/bevformer/visual.py`
+
+
 ![](bevformer_demo_1.png)
 ![](bevformer_demo_2.png)
