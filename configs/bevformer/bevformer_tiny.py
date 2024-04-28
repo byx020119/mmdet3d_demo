@@ -170,8 +170,6 @@ model = dict(
             pc_range=point_cloud_range))))
 
 
-
-
 train_pipeline = [
     dict(type='LoadMultiViewImageFromFiles', to_float32=True),
     dict(type='PhotoMetricDistortionMultiViewImage'),
