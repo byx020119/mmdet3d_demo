@@ -69,14 +69,14 @@ python tools/bevformer/create_data.py nuscenes --root-path ./data/nuscenes --out
 
 从releases中下载权重, 然后放在`./weights/` 文件夹下。
 ```shell
-python test.py configs/bevformer/bevformer_tiny.py weights/bevformer_tiny_epoch_24.pth --eval bbox
+python tools/bevformer/test.py configs/bevformer/bevformer_tiny.py weights/bevformer_tiny_epoch_24.pth --eval bbox
 ```
 PS: 也可以设置好参数后使用pycharm直接运行`test.py`文件。
 
 **训练**
 
 ```shell
-python train.py configs/bevformer/bevformer_tiny.py
+python tools/bevformer/train.py configs/bevformer/bevformer_tiny.py
 ```
 PS: 也可以设置好参数后使用pycharm直接运行`train.py`文件。
 
