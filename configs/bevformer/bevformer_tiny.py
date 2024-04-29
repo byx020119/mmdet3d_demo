@@ -6,17 +6,24 @@
 # smaller input size: 1600*900 -> 800*450
 # multi-scale feautres -> single scale features (C5)
 
-
 _base_ = [
     '../_base_/default_runtime.py'
 ]
 
-plugin = True
+# roots dirs
 plugin_dir = 'mmdet3d_plugin/bevformer'
-
-dataset_type = 'CustomNuScenesDataset'
 data_root = 'data/nuscenes/'
+
+plugin = True
+dataset_type = 'CustomNuScenesDataset'
 file_client_args = dict(backend='disk')
+
+# For nuScenes we usually do 10-class detection
+class_names = [
+    'car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier',
+    'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
+]
+
 
 # If point cloud range is changed, the models should also change their point
 # cloud range accordingly
@@ -25,12 +32,6 @@ voxel_size = [0.2, 0.2, 8]
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
-
-# For nuScenes we usually do 10-class detection
-class_names = [
-    'car', 'truck', 'construction_vehicle', 'bus', 'trailer', 'barrier',
-    'motorcycle', 'bicycle', 'pedestrian', 'traffic_cone'
-]
 
 input_modality = dict(
     use_lidar=False,
@@ -186,7 +187,6 @@ train_pipeline = [
 test_pipeline = [
     dict(type='LoadMultiViewImageFromFiles', to_float32=True),
     dict(type='NormalizeMultiviewImage', **img_norm_cfg),
-   
     dict(
         type='MultiScaleFlipAug3D',
         img_scale=(1600, 900),
@@ -262,8 +262,8 @@ optimizer = dict(
             'img_backbone': dict(lr_mult=0.1),
         }),
     weight_decay=0.01)
-
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
+
 # learning policy
 lr_config = dict(
     policy='CosineAnnealing',
