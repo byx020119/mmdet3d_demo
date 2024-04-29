@@ -1,7 +1,5 @@
 .idea
-demo
-data/can_bus/
-data/nuscenes/
+data/bevformer
 work_dirs/
 weights/
 result/

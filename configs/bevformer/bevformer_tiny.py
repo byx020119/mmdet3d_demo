@@ -12,7 +12,7 @@ _base_ = [
 
 # roots dirs
 plugin_dir = 'mmdet3d_plugin/bevformer'
-data_root = 'data/nuscenes/'
+data_root = 'data/bevformer/nuscenes/'
 
 plugin = True
 dataset_type = 'CustomNuScenesDataset'

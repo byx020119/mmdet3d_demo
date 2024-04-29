@@ -32,24 +32,34 @@ PS: 确保安装的torch与cuda版本与mmcv与mmdet版本对应，否则会出�
 ```
 mmdet3d_demo
 ├── configs
+│   ├── _base_
+│   ├── bevformer
+│   ├── second
+│   └── ...
 ├── data
-│   ├── can_bus
-│   ├── kitti
-│   └── nuscenes
+│   ├── bevformer
+│   ├── demo
+│   └── ...
 ├── mmdet3d_plugin
-├── pcd_demo.py
+│   ├── bevformer
+│   ├── ...
+│   └── __init__.py
 ├── tools
-└── weights
-    ├── bevformer_tiny_epoch_24.pth
-    └── hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth
-
+│   ├── bevformer
+│   └── ...
+├── weights
+│   ├── bevformer_tiny_epoch_24.pth
+│   ├── hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth
+│   └── ...
+├── pcd_demo.py
+...
 ```
 ### pcd_demo
 
 从releases中下载权重, 然后放在`./weights/` 文件夹下。
 
 ```sh
-python pcd_demo.py data/kitti/kitti_000008.bin configs/second/hv_second_secfpn_6x8_80e_kitti-3d-car.py weights/hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth --show
+python pcd_demo.py data/demo/kitti/kitti_000008.bin configs/second/hv_second_secfpn_6x8_80e_kitti-3d-car.py weights/hv_second_secfpn_6x8_80e_kitti-3d-car_20200620_230238-393f000c.pth --show
 ```
 
 PS: 也可以设置好参数后使用pycharm直接运行`pcd_demo.py`文件。
@@ -62,7 +72,7 @@ PS: 也可以设置好参数后使用pycharm直接运行`pcd_demo.py`文件。
 下载nuScenes V1.0 的full或者mini数据集（包括data和CAN bus expansion data），然后处理数据：
 
 ```shell
-python tools/bevformer/create_data.py nuscenes --root-path ./data/nuscenes --out-dir ./data/nuscenes --extra-tag nuscenes --version v1.0 --canbus ./data
+python tools/bevformer/create_data.py nuscenes --root-path ./data/bevformer/nuscenes --out-dir ./data/bevformer/nuscenes --extra-tag nuscenes --version v1.0 --canbus ./data/bevformer
 ```
 
 **测试**
