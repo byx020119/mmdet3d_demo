@@ -108,6 +108,7 @@ PS: 也可以设置好参数后使用pycharm直接运行`train.py`文件。
 ### occformer_demo
 
 **准备数据集**
+
 将数据准备成以下形式
 ```
 data
