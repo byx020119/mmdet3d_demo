@@ -1,5 +1,6 @@
 .idea
-data/bevformer
+data/
+!data/demo/
 work_dirs/
 weights/
 result/
