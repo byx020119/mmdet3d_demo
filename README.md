@@ -76,12 +76,28 @@ PS: 也可以设置好参数后使用pycharm直接运行`pcd_demo.py`文件。
 
 **准备数据集**
 
-下载nuScenes V1.0 的full或者mini数据集（包括data和CAN bus expansion data），然后处理数据：
+下载nuScenes V1.0 的full或者mini数据集（包括data和CAN bus expansion data），然后处理数据。
+
+在data下新建一个bevformer文件夹，将数据准备成以下形式
+
+```
+bevformer
+├── can_bus
+└── nuscenes
+    ├── maps
+    ├── nuscenes_infos_temporal_train_mono3d.coco.json
+    ├── nuscenes_infos_temporal_train.pkl
+    ├── nuscenes_infos_temporal_val_mono3d.coco.json
+    ├── nuscenes_infos_temporal_val.pkl
+    ├── samples
+    ├── sweeps
+    └── v1.0-mini
+
+```
 
 ```shell
 python tools/bevformer/create_data.py nuscenes --root-path ./data/bevformer/nuscenes --out-dir ./data/bevformer/nuscenes --extra-tag nuscenes --version v1.0-mini --canbus ./data/bevformer
 ```
-
 **测试**
 
 从releases中下载权重, 然后放在`./weights/` 文件夹下。
@@ -109,29 +125,24 @@ PS: 也可以设置好参数后使用pycharm直接运行`train.py`文件。
 
 **准备数据集**
 
-将数据准备成以下形式
+在data下新建一个occformer文件夹，将数据准备成以下形式
 ```
-data
-├── occformer/
-│   ├── can_bus/
-│   ├── nuscenes/
-│   │   ├── maps/
-│   │   ├── samples/
-│   │   ├── sweeps/
-│   │   ├── v1.0-test/
-|   |   ├── v1.0-trainval/
-|   |   ├── lidarseg
-|   |   │   ├──v1.0-trainval/
-|   |   │   ├──v1.0-mini/
-|   |   │   ├──v1.0-test/
-|   |   ├── nuscenes_infos_temporal_train.pkl
-|   |   ├── nuscenes_infos_temporal_val.pkl
-|   |   ├── nuscenes_infos_temporal_test.pkl
+occformer
+├── can_bus
+└── nuscenes
+    ├── lidarseg
+    ├── maps
+    ├── nuscenes_infos_temporal_train.pkl
+    ├── nuscenes_infos_temporal_val.pkl
+    ├── samples
+    ├── sweeps
+    └── v1.0-mini
 ```
 
 ```shell
 python tools/occformer/create_data.py nuscenes --root-path ./data/occformer/nuscenes --out-dir ./data/occformer/nuscenes --extra-tag nuscenes --version v1.0-mini --canbus ./data/occformer
 ```
+PS：使用lidarseg中v1.0-mini中的文件代替原本的v1.0-mini中的部分文件。
 
 **测试**
 
