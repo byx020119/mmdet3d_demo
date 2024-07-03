@@ -125,6 +125,8 @@ PS: 也可以设置好参数后使用pycharm直接运行`train.py`文件。
 
 **准备数据集**
 
+下载nuScenes V1.0 的full或者mini数据集（包括data、CAN bus expansion data、nuScenes-lidarseg），然后处理数据。
+
 在data下新建一个occformer文件夹，将数据准备成以下形式
 ```
 occformer
